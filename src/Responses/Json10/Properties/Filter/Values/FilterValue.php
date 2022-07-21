@@ -15,6 +15,9 @@ abstract class FilterValue
     /** @var string */
     protected $name;
 
+    /** @var string */
+    protected $displayName;
+
     /** @var bool */
     protected $selected;
 
@@ -30,6 +33,9 @@ abstract class FilterValue
         // values.
         if ($this->name === null) {
             $this->name = ResponseHelper::getStringProperty($filterValue, 'value');
+        }
+        if ($this->displayName === null) {
+            $this->displayName = ResponseHelper::getStringProperty($filterValue, 'displayName');
         }
         if ($this->selected === null) {
             $this->selected = ResponseHelper::getBoolProperty($filterValue, 'selected');
@@ -64,6 +70,14 @@ abstract class FilterValue
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDisplayName()
+    {
+        return $this->displayName;
     }
 
     /**
